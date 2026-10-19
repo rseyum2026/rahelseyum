@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rahel Seyum</title>
+<meta name="description" content="Rahel Seyum, IAAP CPACC and ISTQB certified Accessibility and QA Engineer. WCAG 2.1 audits, screen reader testing and test automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one editorial column, generous margins; the hero pairs the name with a live contrast check of this very page. */
+:root{
+  --bg:#0f1118; --surface:#171a24; --fg:#ede9e1; --muted:#a7a3b0; --accent:#d8b878; --line:rgba(237,233,225,.14);
+  --on-accent:#0f1118;
+  --display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --body:"Hanken Grotesk","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --measure:65ch;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#f4f5f7; --surface:#ffffff; --fg:#151722; --muted:#4c5160; --accent:#7f5a17; --line:rgba(21,23,34,.14);
+  --on-accent:#ffffff; color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#f4f5f7; --surface:#ffffff; --fg:#151722; --muted:#4c5160; --accent:#7f5a17; --line:rgba(21,23,34,.14);
+  --on-accent:#ffffff; color-scheme:light}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.0625rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:72rem;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+@media (max-width:480px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:.22em;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+.skip{position:absolute;left:max(16px,env(safe-area-inset-left,0px));top:-100px;z-index:20;background:var(--accent);color:var(--on-accent);padding:.7rem 1rem;font-weight:600;text-decoration:none;border-radius:2px}
+.skip:focus{top:calc(env(safe-area-inset-top,0px) + 12px)}
+
+/* header */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.9rem;flex-wrap:wrap}
+.mark{font-family:var(--display);font-size:1.35rem;font-weight:500;text-decoration:none;letter-spacing:.01em}
+.mark span{color:var(--accent);font-style:italic}
+.site-head nav ul{display:flex;gap:clamp(.9rem,2.5vw,2rem);list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.site-head nav a{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;text-decoration:none;color:var(--muted);padding-block:.4rem}
+.site-head nav a:hover{color:var(--fg)}
+
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 1rem}
+
+/* hero */
+.hero{padding-block:clamp(3.5rem,9vw,7.5rem) clamp(3rem,7vw,5.5rem);display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:end}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(3rem,9vw,7.2rem);line-height:.95;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero .role{font-family:var(--display);font-style:italic;font-size:clamp(1.25rem,2.4vw,1.6rem);margin:1.5rem 0 0;color:var(--fg)}
+.hero .lede{max-width:46ch;color:var(--muted);margin:1rem 0 0;font-size:1.125rem}
+.cta{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2.2rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.5rem;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid var(--accent);border-radius:999px;transition:background .25s,color .25s}
+.btn-solid{background:var(--accent);color:var(--on-accent)}
+.btn-solid:hover{background:transparent;color:var(--accent)}
+.btn-ghost{color:var(--fg)}
+.btn-ghost:hover{background:var(--accent);color:var(--on-accent)}
+
+.hero h1,.hero .role,.hero .lede,.cta,.check{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero .role{animation-delay:.08s}.hero .lede{animation-delay:.14s}.cta{animation-delay:.2s}.check{animation-delay:.3s}
+@keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+
+/* portrait + live contrast card */
+.hero-side{position:relative;min-width:0;max-width:26rem;width:100%;justify-self:end}
+.portrait{margin:0;position:relative;aspect-ratio:4/5;max-width:100%;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.portrait::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border:1px solid var(--accent);border-radius:999px 999px 4px 4px;pointer-events:none}
+.portrait img{position:relative;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%;border-radius:999px 999px 4px 4px;filter:saturate(.92)}
+.hero-side .check{position:relative;margin:-4.5rem 0 0 -2.5rem;box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.check{background:var(--surface);border:1px solid var(--line);padding:1.6rem 1.6rem 1.4rem;border-radius:4px;min-width:0}
+.check .sample{font-family:var(--display);font-size:3rem;line-height:1;margin:0}
+.check dl{display:grid;grid-template-columns:auto 1fr;gap:.45rem 1.2rem;margin:1.3rem 0 0;font-family:var(--mono);font-size:.82rem}
+.check dt{color:var(--muted)}
+.check dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.check .ratio{font-family:var(--display);font-size:2.4rem;line-height:1;text-align:right}
+.pass{display:inline-block;border:1px solid var(--accent);color:var(--accent);border-radius:999px;padding:.05rem .55rem;font-size:.72rem;letter-spacing:.08em}
+.check p.note{font-size:.82rem;color:var(--muted);margin:1.1rem 0 0;border-top:1px solid var(--line);padding-top:.9rem}
+kbd{font-family:var(--mono);font-size:.8em;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:.05rem .4rem;color:var(--fg)}
+
+/* credentials */
+.creds{border-block:1px solid var(--line)}
+.creds ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.creds li{padding:1.4rem 1.2rem;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:.2rem}
+.creds li:first-child{border-left:0;padding-left:0}
+.creds strong{font-family:var(--display);font-weight:500;font-size:1.3rem}
+.creds span{color:var(--muted);font-size:.9rem}
+
+section.block{padding-block:clamp(4rem,9vw,7rem)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:2rem;margin-bottom:3rem;align-items:end}
+.sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.02;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.sec-head p{color:var(--muted);margin:0;max-width:var(--measure)}
+
+/* impact */
+.impact{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2rem}
+.impact li{border-top:1px solid var(--accent);padding-top:1.1rem;min-width:0}
+.impact .num{display:block;font-family:var(--display);font-size:clamp(2.6rem,5vw,3.6rem);line-height:1;font-variant-numeric:lining-nums}
+.impact .lbl{display:block;color:var(--muted);font-size:.95rem;margin-top:.6rem}
+
+/* work */
+.work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:2rem;display:flex;flex-direction:column;gap:1rem;min-width:0;transition:border-color .3s}
+.case:hover{border-color:var(--accent)}
+.case .meta{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.case .status{color:var(--accent)}
+.case h3{font-family:var(--display);font-weight:500;font-size:1.65rem;line-height:1.15;margin:0}
+.case p{margin:0;color:var(--muted)}
+.tags{list-style:none;margin:auto 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
+.tags li{font-family:var(--mono);font-size:.74rem;border:1px solid var(--line);border-radius:999px;padding:.2rem .65rem;color:var(--fg)}
+
+/* approach: POUR */
+.pour{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.pour li{padding:1.8rem 1.4rem 0 0;min-width:0}
+.pour li+li{padding-left:1.4rem;border-left:1px solid var(--line)}
+.pour .letter{font-family:var(--display);font-style:italic;font-size:3.4rem;line-height:1;color:var(--accent);display:block}
+.pour h3{font-size:1.05rem;font-weight:600;margin:.8rem 0 .4rem}
+.pour p{margin:0;color:var(--muted);font-size:.95rem}
+
+/* experience */
+.xp{list-style:none;margin:0;padding:0}
+.xp>li{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:2.5rem;padding-block:2.75rem;border-top:1px solid var(--line)}
+.when-col{position:sticky;top:calc(env(safe-area-inset-top,0px) + 5rem);align-self:start}
+.xp .when{font-family:var(--mono);font-size:.82rem;color:var(--accent);font-variant-numeric:tabular-nums;margin:.35rem 0 .6rem;letter-spacing:.04em}
+.xp .tagline{font-family:var(--display);font-style:italic;font-size:1.2rem;line-height:1.3;margin:0;color:var(--fg);text-wrap:balance}
+.xp h3{font-family:var(--display);font-weight:500;font-size:clamp(1.5rem,3vw,1.9rem);margin:0;line-height:1.15}
+.xp .vol{font-family:var(--body);font-size:.95rem;font-weight:400;color:var(--muted)}
+.xp .org{color:var(--muted);margin:.35rem 0 1.1rem;font-size:.95rem}
+.hl{list-style:none;margin:0 0 1.4rem;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+.hl li{font-size:.85rem;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.3rem .85rem}
+.hl b{color:var(--accent);font-family:var(--display);font-size:1.05rem;font-weight:600;margin-right:.15rem}
+.bul{margin:0;padding:0;list-style:none;max-width:var(--measure);display:grid;gap:.85rem}
+.bul li{position:relative;padding-left:1.4rem;color:var(--muted)}
+.bul li::before{content:"";position:absolute;left:0;top:.72em;width:.55rem;height:1px;background:var(--accent)}
+.bul strong{color:var(--fg);font-weight:600}
+
+/* toolkit */
+.kit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem}
+.kit h3{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 .8rem;font-weight:500}
+.kit ul{list-style:none;margin:0;padding:0}
+.kit li{padding-block:.5rem;border-bottom:1px solid var(--line)}
+
+/* contact */
+.contact{background:var(--surface);border-top:1px solid var(--line)}
+.contact .wrap{padding-block:clamp(4rem,9vw,7rem)}
+.contact h2{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,7vw,5.2rem);line-height:1;margin:0;max-width:16ch;text-wrap:balance}
+.contact h2 em{color:var(--accent)}
+.contact p{color:var(--muted);max-width:52ch}
+.email-row{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:2rem}
+.email{font-family:var(--display);font-size:clamp(1.3rem,3.6vw,2rem);overflow-wrap:anywhere}
+.copy{font:inherit;font-size:.85rem;font-weight:600;background:transparent;color:var(--fg);border:1px solid var(--accent);border-radius:999px;padding:.55rem 1.1rem;cursor:pointer}
+.copy:hover{background:var(--accent);color:var(--on-accent)}
+.contact .links{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;list-style:none;padding:0}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .hero-side{justify-self:center;max-width:24rem;margin-top:1rem}
+  .hero-side .check{margin:-3.5rem .75rem 0}
+  .impact,.pour{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pour li:nth-child(3){padding-left:0;border-left:0}
+  .pour li{padding-bottom:1.5rem}
+  .sec-head{grid-template-columns:minmax(0,1fr)}
+  .kit{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+@media (max-width:640px){
+  .work,.kit{grid-template-columns:minmax(0,1fr)}
+  .creds ul{grid-template-columns:minmax(0,1fr)}
+  .creds li{border-left:0;padding-left:0;border-top:1px solid var(--line)}
+  .creds li:first-child{border-top:0}
+  .xp>li{grid-template-columns:minmax(0,1fr);gap:.6rem}
+  .when-col{position:static}
+  .case{padding:1.5rem}
+}
+@media (max-width:420px){
+  .impact,.pour{grid-template-columns:minmax(0,1fr)}
+  .pour li+li{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+}
+</style>
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="mark" href="#top">Rahel <span>Seyum</span></a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <div class="wrap hero" id="top">
+    <div>
+      <p class="eyebrow">Accessibility &amp; Quality Assurance Engineer</p>
+      <h1>Software that works for <em>everyone</em>.</h1>
+      <p class="role">Rahel Seyum, CPACC · ISTQB</p>
+      <p class="lede">I test web and mobile products the way people really use them: with a keyboard, a screen reader, and the page zoomed to 200%. Then I write reports that developers can fix from.</p>
+      <div class="cta">
+        <a class="btn btn-solid" href="#work">See my work</a>
+        <a class="btn btn-ghost" href="resume.pdf">Résumé (PDF)</a>
+      </div>
+    </div>
+
+    <div class="hero-side">
+    <figure class="portrait">
+      <img src="rahel-seyum.jpg" alt="Portrait of Rahel Seyum" width="400" height="400">
+    </figure>
+    <aside class="check" aria-labelledby="check-title">
+      <p class="eyebrow" id="check-title">Live check · this page</p>
+      <p class="sample" aria-hidden="true">Aa</p>
+      <dl>
+        <dt>Text contrast</dt><dd class="ratio"><span id="ratio">15.6</span>:1</dd>
+        <dt>WCAG 1.4.3 (AA)</dt><dd><span class="pass" id="aa">Pass</span></dd>
+        <dt>WCAG 1.4.6 (AAA)</dt><dd><span class="pass" id="aaa">Pass</span></dd>
+        <dt>Theme</dt><dd id="theme">Dark</dd>
+      </dl>
+      <p class="note">Measured from this page's own colors, and it updates when you switch light or dark mode. Press <kbd>Tab</kbd> to see the focus outline.</p>
+    </aside>
+    </div>
+  </div>
+
+  <div class="creds">
+    <div class="wrap">
+      <ul aria-label="Credentials">
+        <li><strong>IAAP CPACC</strong><span>Certified Professional in Accessibility Core Competencies</span></li>
+        <li><strong>ISTQB</strong><span>Certified Tester</span></li>
+        <li><strong>M.S. Information Technology</strong><span>Grand Canyon University</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="block" aria-labelledby="impact-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Impact</p><h2 id="impact-title">Results in numbers</h2></div>
+        <p>4+ years across functional, regression, end-to-end and accessibility testing, at Amazon and in enterprise software.</p>
+      </div>
+      <ul class="impact">
+        <li><span class="num">500+</span><span class="lbl">manual and automated test cases executed in one enterprise role</span></li>
+        <li><span class="num">40%</span><span class="lbl">less regression testing time after building Selenium automation</span></li>
+        <li><span class="num">150+</span><span class="lbl">WCAG 2.0 AA findings documented in an enterprise CRM audit</span></li>
+        <li><span class="num">20+</span><span class="lbl">iOS and Android devices covered in compatibility testing</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="work" aria-labelledby="work-title" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Selected work</p><h2 id="work-title">Audits &amp; case studies</h2></div>
+        <p>Client work is described without confidential details. Public audits use demo sites built for accessibility practice, so the full reports can be shared.</p>
+      </div>
+      <div class="work">
+        <article class="case">
+          <div class="meta"><span>Enterprise CRM · SolluCIO</span><span class="status">Client work</span></div>
+          <h3>WCAG 2.0 AA audit of an enterprise CRM</h3>
+          <p>Audited core CRM workflows with screen readers and automated scans. Delivered reports covering 150+ findings, each with severity, evidence and remediation steps for the engineering team.</p>
+          <ul class="tags" aria-label="Methods"><li>WCAG 2.0 AA</li><li>JAWS</li><li>NVDA</li><li>axe</li></ul>
+        </article>
+        <article class="case">
+          <div class="meta"><span>Mobile · Brana Academy</span><span class="status">Ongoing</span></div>
+          <h3>Accessibility testing for an AI learning app</h3>
+          <p>Test AI-powered learning features on iOS and Android with axe, WAVE, JAWS, NVDA and ZoomText. Write WCAG 2.1 issue reports with severity, evidence and fixes.</p>
+          <ul class="tags" aria-label="Methods"><li>WCAG 2.1</li><li>ZoomText</li><li>iOS / Android</li></ul>
+        </article>
+        <article class="case">
+          <div class="meta"><span>Public audit · W3C demo</span><span class="status">Report in progress</span></div>
+          <h3>CityLights home page audit</h3>
+          <p>A full WCAG 2.1 AA audit of the W3C's practice site, with steps to reproduce, user impact and code fixes for every issue found.</p>
+          <ul class="tags" aria-label="Methods"><li>WCAG 2.1 AA</li><li>Keyboard</li><li>Code fixes</li></ul>
+        </article>
+        <article class="case">
+          <div class="meta"><span>Public audit · Deque demo</span><span class="status">Report in progress</span></div>
+          <h3>Mars Commuter booking flow</h3>
+          <p>Testing a multi-step booking form: date pickers, error messages and pop-up dialogs, checked with NVDA and the keyboard alone.</p>
+          <ul class="tags" aria-label="Methods"><li>Forms</li><li>Dialogs</li><li>NVDA</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="approach" aria-labelledby="approach-title" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Approach</p><h2 id="approach-title">How I test</h2></div>
+        <p>Automated tools find only part of the problems. I pair axe and WAVE scans with manual testing against the four WCAG principles.</p>
+      </div>
+      <ul class="pour">
+        <li><span class="letter" aria-hidden="true">P</span><h3>Perceivable</h3><p>Alt text, captions, color contrast and text that holds up at 200% zoom and in ZoomText.</p></li>
+        <li><span class="letter" aria-hidden="true">O</span><h3>Operable</h3><p>Every control reachable by keyboard, a visible focus outline and no keyboard traps.</p></li>
+        <li><span class="letter" aria-hidden="true">U</span><h3>Understandable</h3><p>Clear labels, helpful error messages and no surprise page changes.</p></li>
+        <li><span class="letter" aria-hidden="true">R</span><h3>Robust</h3><p>Correct names, roles and states, so JAWS and NVDA announce each element correctly.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="experience" aria-labelledby="xp-title" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Experience</p><h2 id="xp-title">Where I've worked</h2></div>
+        <p>Four roles across Amazon, enterprise software, an AI learning startup and medical devices. Each one built on the last.</p>
+      </div>
+      <ol class="xp" reversed>
+        <li>
+          <div class="when-col">
+            <p class="when">Jan 2025 – Present</p>
+            <p class="tagline">Quality and accessibility for an AI learning app</p>
+          </div>
+          <div class="role-body">
+            <h3>Quality Assurance Engineer <span class="vol">(Volunteer)</span></h3>
+            <p class="org">Brana Academy · AI-Powered Educational App · Lynnwood, WA</p>
+            <ul class="hl" aria-label="Highlights"><li>iOS + Android</li><li>WCAG 2.0 / 2.1</li><li>RTM owner</li></ul>
+            <ul class="bul">
+              <li><strong>End-to-end test design.</strong> Design and execute functional, regression, smoke, usability and cross-platform test cases for AI-powered education features, documenting expected results, actual outcomes and status.</li>
+              <li><strong>Traceability.</strong> Maintain test scenarios, requirement traceability matrices (RTM) and execution summaries that tie acceptance criteria to end-to-end coverage and release readiness.</li>
+              <li><strong>Mobile coverage.</strong> Validate iOS and Android experiences across device models, OS versions and screen sizes; verify fixes and coordinate defect resolution with developers and product.</li>
+              <li><strong>Agile partner.</strong> Support sprint planning, test estimation, defect triage, issue reproduction, retesting and root-cause discussions, and communicate quality risks clearly.</li>
+              <li><strong>Accessibility validation.</strong> Test with axe, WAVE, JAWS, NVDA and ZoomText, and write WCAG 2.0/2.1 issue reports with severity, evidence and remediation guidance.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="when-col">
+            <p class="when">Apr 2023 – Dec 2024</p>
+            <p class="tagline">Enterprise testing, automation and a CRM accessibility audit</p>
+          </div>
+          <div class="role-body">
+            <h3>Quality Assurance Test Engineer</h3>
+            <p class="org">SolluCIO (SPIE) · Seattle, WA</p>
+            <ul class="hl" aria-label="Highlights"><li><b>500+</b> test cases</li><li><b>95%</b> coverage</li><li><b>200+</b> defects found</li><li><b>40%</b> faster regression</li><li><b>30%</b> faster fixes</li></ul>
+            <ul class="bul">
+              <li><strong>High-volume execution.</strong> Executed 500+ manual and automated test cases across functional, integration, regression, smoke and release cycles, reaching 95% coverage and finding 200+ defects.</li>
+              <li><strong>Test documentation.</strong> Created test plans, test cases, execution evidence, defect tickets and status reports, coordinating testing across QA, engineering and product teams.</li>
+              <li><strong>Automation.</strong> Implemented and maintained Selenium WebDriver scripts that cut regression testing time by 40%, and verified bug fixes across repeated cycles.</li>
+              <li><strong>Defect triage.</strong> Led triage and cross-team root-cause work that reduced average defect resolution time by 30%.</li>
+              <li><strong>Accessibility audit.</strong> Tested an enterprise CRM against WCAG 2.0 AA and wrote audit reports documenting 150+ findings with severity and remediation steps.</li>
+              <li><strong>Devices and metrics.</strong> Validated mobile compatibility on 20+ iOS and Android devices, and analyzed testing KPIs to spot quality trends and release risks.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="when-col">
+            <p class="when">Oct 2022 – Apr 2023</p>
+            <p class="tagline">Owning quality for Amazon Fresh web and mobile features</p>
+          </div>
+          <div class="role-body">
+            <h3>Quality Assurance Engineer Intern</h3>
+            <p class="org">Amazon · Amazon Fresh · Seattle, WA</p>
+            <ul class="hl" aria-label="Highlights"><li><b>300+</b> test cases</li><li>QuickSight dashboards</li><li>Full test lifecycle</li></ul>
+            <ul class="bul">
+              <li><strong>Full lifecycle ownership.</strong> Planned and owned testing for Amazon Fresh web and mobile features, from test strategy and plans through test design, execution and bug reporting, within Agile sprints.</li>
+              <li><strong>Risk-based testing.</strong> Developed and executed 300+ functional, regression and end-to-end test cases, prioritizing high-risk customer workflows and edge cases to keep critical defects out of production.</li>
+              <li><strong>Automation.</strong> Automated repeatable test cases to reduce manual error, speed up regression cycles and raise team efficiency.</li>
+              <li><strong>Quality dashboards.</strong> Built Amazon QuickSight dashboards tracking QA progress, defect trends and quality KPIs, giving stakeholders clear visibility into release readiness.</li>
+              <li><strong>Root-cause analysis.</strong> Investigated defects with development teams and drove corrective actions that prevented repeat issues and improved the customer experience.</li>
+              <li><strong>Quality standards.</strong> Worked with engineering, product and UX to define and maintain quality standards and testing guidelines across the SDLC.</li>
+              <li><strong>Exploratory and accessibility testing.</strong> Ran exploratory, usability and accessibility testing, and logged clear, reproducible defects in Jira through to resolution.</li>
+              <li><strong>Release decisions.</strong> Analyzed product quality against customer requirements and KPIs, and wrote test summaries that informed go/no-go decisions.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="when-col">
+            <p class="when">May 2021 – Feb 2022</p>
+            <p class="tagline">Regulated testing for medical devices</p>
+          </div>
+          <div class="role-body">
+            <h3>Medical Assembly Tester</h3>
+            <p class="org">Computech · Bausch Health / Solta Medical · Bothell, WA</p>
+            <ul class="hl" aria-label="Highlights"><li><b>25%</b> fewer product failures</li><li>Staff trainer</li></ul>
+            <ul class="bul">
+              <li><strong>Procedure-driven testing.</strong> Executed documented test procedures, captured results and troubleshot medical device technology against technical specifications and quality standards.</li>
+              <li><strong>Production quality.</strong> Supported traceability, defect reporting and production QA, contributing to a 25% reduction in product failure rates.</li>
+              <li><strong>Training.</strong> Trained new staff on test procedures.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="kit-title" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Toolkit</p><h2 id="kit-title">Tools &amp; standards</h2></div>
+        <p>What I use day to day.</p>
+      </div>
+      <div class="kit">
+        <div><h3>Accessibility</h3><ul><li>WCAG 2.0 / 2.1, Section 508</li><li>JAWS, NVDA, ZoomText</li><li>axe, WAVE</li></ul></div>
+        <div><h3>Testing &amp; automation</h3><ul><li>Selenium WebDriver</li><li>Java, JavaScript, TypeScript</li><li>Postman, REST / SOAP APIs</li></ul></div>
+        <div><h3>QA management &amp; data</h3><ul><li>Jira, TestRail</li><li>Amazon QuickSight</li><li>MySQL, SQL Server, PostgreSQL</li></ul></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2 id="contact-title">Let's make your product <em>usable by everyone</em>.</h2>
+    <p>Open to accessibility testing and QA engineering roles in the Seattle area and remote. Based in Everett, WA.</p>
+    <div class="email-row">
+      <span class="email" id="email">rahel.seyum.it@gmail.com</span>
+      <button class="copy" id="copy" type="button">Copy email</button>
+      <span class="sr-only" id="copy-status" role="status" aria-live="polite"></span>
+    </div>
+    <ul class="links">
+      <li><a href="mailto:rahel.seyum.it@gmail.com">Send an email</a></li>
+      <li><a href="resume.pdf">Download résumé (PDF)</a></li>
+      <!-- Add your LinkedIn: <li><a href="https://www.linkedin.com/in/YOUR-NAME">LinkedIn profile</a></li> -->
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Rahel Seyum</span>
+    <span>Built to meet WCAG 2.1 AA.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  function lum(rgb){
+    var c=rgb.match(/[\d.]+/g).slice(0,3).map(function(v){v=v/255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)});
+    return 0.2126*c[0]+0.7152*c[1]+0.0722*c[2];
+  }
+  function update(){
+    var cs=getComputedStyle(document.body);
+    var a=lum(cs.color),b=lum(cs.backgroundColor);
+    var r=(Math.max(a,b)+0.05)/(Math.min(a,b)+0.05);
+    document.getElementById('ratio').textContent=r.toFixed(1);
+    document.getElementById('aa').textContent=r>=4.5?'Pass':'Fail';
+    document.getElementById('aaa').textContent=r>=7?'Pass':'Fail';
+    document.getElementById('theme').textContent=b<0.2?'Dark':'Light';
+  }
+  update();
+  try{window.matchMedia('(prefers-color-scheme: light)').addEventListener('change',function(){setTimeout(update,50)})}catch(e){}
+  try{new MutationObserver(function(){setTimeout(update,50)}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']})}catch(e){}
+
+  var btn=document.getElementById('copy'),status=document.getElementById('copy-status'),email=document.getElementById('email');
+  function selectEmail(){var s=window.getSelection(),r=document.createRange();r.selectNodeContents(email);s.removeAllRanges();s.addRange(r)}
+  btn.addEventListener('click',function(){
+    var done=function(msg){btn.textContent=msg;status.textContent=msg;setTimeout(function(){btn.textContent='Copy email'},2200)};
+    try{
+      navigator.clipboard.writeText(email.textContent).then(function(){done('Email copied')},function(){selectEmail();done('Email selected, press Ctrl+C to copy')});
+    }catch(e){selectEmail();done('Email selected, press Ctrl+C to copy')}
+  });
+})();
+</script>
+</body>
+</html>
